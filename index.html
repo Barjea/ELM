@@ -1,21 +1,45 @@
-{% extends "layout.html" %}
-
-{% block content %}
-    <header class="hero">
-        <hgroup>
-            <h1>Club Entre Lac et Morgon</h1>
-            <h3>Découvrez nos prochaines sorties et événements</h3>
-        </hgroup>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Entre Lac et Morgon</title>
+    <!-- Base Pico.css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <!-- Votre fichier CSS unique -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- En-tête / Menu de navigation commun -->
+    <header class="container">
+        <nav>
+            <ul>
+                <li><strong><a href="index.html">Club Entre Lac et Morgon</a></strong></li>
+            </ul>
+            <ul>
+                <li><a href="presentation.html">Présentation</a></li>
+                <li><a href="activites.html">Activités</a></li>
+                <li><a href="photos.html">Photos</a></li>
+                <li><a href="#" role="button" class="contrast">Adhérer</a></li>
+            </ul>
+        </nav>
     </header>
 
+    <!-- Contenu spécifique de la page d'accueil -->
     <main class="container">
-        <h2 id="evenements">Prochains Événements</h2>
-        
-        <!-- Zone dynamique remplie par JavaScript -->
-        <div id="liste-evenements">
+        <h2>Prochains Événements</h2>
+        <div id="evenements-container">
             <p>Chargement des événements en cours...</p>
         </div>
     </main>
+    
+    <!-- Pied de page -->
+    <footer class="container">
+        <small>© 2026 Club Entre Lac et Morgon</small>
+    </footer>
+
+    <!-- Script de récupération des données Google Apps Script -->
+    <script src="config.js"></script>
 
     <script>
         fetch(GAS_EXEC_URL)

@@ -1,14 +1,47 @@
-{% extends "layout.html" %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Entre Lac et Morgon - Préentation du Club</title>
+    <!-- Base Pico.css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <!-- Votre fichier CSS unique -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- En-tête / Menu de navigation commun -->
+    <header class="container">
+        <nav>
+            <ul>
+                <li><strong><a href="index.html">Club Entre Lac et Morgon</a></strong></li>
+            </ul>
+            <ul>
+                <li><a href="presentation.html">Présentation</a></li>
+                <li><a href="activites.html">Activités</a></li>
+                <li><a href="photos.html">Photos</a></li>
+                <li><a href="#" role="button" class="contrast">Adhérer</a></li>
+            </ul>
+        </nav>
+    </header>
 
-{% block content %}
-<main class="container">
-    <h2>Présentation du Club</h2>
-    
-    <!-- Zone où la liste sera injectée -->
-    <div id="liste-presentation-container">
-        <p>Chargement des documents...</p>
-    </div>
-</main>
+	<main class="container">
+		<h2>Présentation du Club</h2>
+		
+		<!-- Zone où la liste sera injectée -->
+		<div id="liste-presentation-container">
+		    <p>Chargement des documents...</p>
+		</div>
+	</main>
+
+    <!-- Pied de page -->
+    <footer class="container">
+        <small>© 2026 Club Entre Lac et Morgon</small>
+    </footer>
+
+    <!-- Script de configuration et de récupération des données -->
+    <script src="config.js"></script>
+
 
 <script>
     fetch(GAS_EXEC_URL)
@@ -38,4 +71,4 @@
             document.getElementById('liste-presentation-container').innerHTML = '<p>Impossible de charger les documents.</p>';
         });
 </script>
-{% endblock %}
+
