@@ -56,7 +56,7 @@
 		fetch(GAS_EXEC_URL)
 		    .then(response => response.json())
 		    .then(data => {
-		        const container = document.getElementById('liste-activites-container');
+		        const container = document.getElementById('activites-container');
 		        container.innerHTML = '';
 
 		        if (!data.activites || data.activites.length === 0) {
@@ -77,7 +77,7 @@
 		    })
 		    .catch(error => {
 		        console.error('Erreur :', error);
-		        document.getElementById('liste-activites-container').innerHTML = '<p>Impossible de charger les documents.</p>';
+		        document.getElementById('activites-container').innerHTML = '<p>Impossible de charger les documents.</p>';
 		    });
 	</script>
     </body>
