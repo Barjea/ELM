@@ -1,0 +1,118 @@
+/* On force le corps de la page à prendre toute la hauteur pour pousser le footer */
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+header.hero {
+    width: 100vw; position: relative; left: 50%; right: 50%;
+    margin-left: -50vw; margin-right: -50vw;
+    height: 200px; background-color: #3b4c54; 
+    background-image: url("../img/fond-morgon red.jpg");
+    background-size: contain; background-position: center;
+    background-repeat: no-repeat; display: flex;
+    align-items: center; justify-content: center;
+    color: white; 
+    margin-bottom: 0 !important; /* On colle le hero au titre */
+}
+
+main { 
+    flex: 1; /* Le contenu prend tout l'espace disponible, poussant le footer en bas */
+    padding: 0 1rem !important; 
+}
+
+/* LE TITRE : On réduit l'espace au-dessus et en-dessous */
+h2#evenements { 
+    margin: 0.5rem 0 0.2rem 0 !important; 
+    padding: 0 !important;
+    font-size: 1.4rem;
+}
+
+/* L'ARTICLE : C'est ici qu'on neutralise Pico */
+article {
+    /* On écrase les variables internes de Pico qui créent le vide */
+    --block-spacing-vertical: 0.3rem !important; 
+    --typography-spacing-vertical: 0 !important;
+    
+    margin-bottom: 0.3rem !important; /* L'espace entre deux articles */
+    padding: 0 !important;
+    border-radius: 4px;
+}
+
+/* L'EN-TETE : Très fin */
+article header {
+    margin: 0 !important;
+    padding: 0.2rem 1rem !important;
+    font-size: 0.85rem;
+}
+
+/* LE CORPS : Centrage laser */
+.event-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.4rem 1rem !important;
+    background: white;
+}
+
+.event-info p { margin: 0 !important; line-height: 1.1; font-size: 0.9rem; }
+
+.event-actions { display: flex; align-items: center; gap: 1.5rem; }
+.event-actions p { margin: 0 !important; font-size: 0.85rem; font-weight: bold; }
+
+/* Style pour la description mise en avant */
+.description-principale {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem !important;
+    color: var(--primary);
+    line-height: 1.4;
+}
+
+/* Ligne d'infos compacte */
+.info-line {
+    display: flex;
+    flex-wrap: wrap; /* Permet de passer à la ligne sur très petit écran */
+    gap: 1.5rem;      /* Espace entre les infos */
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+}
+
+/* On s'assure que les icônes ressortent un peu */
+.info-line span {
+    white-space: nowrap; /* Empêche une icône d'être séparée de son texte */
+}
+
+.status-line {
+    font-size: 0.95rem;
+}
+
+/* BOUTONS COMPACTS */
+article a[role="button"], article a.outline {
+    padding: 0.2rem 0.6rem !important;
+    font-size: 0.75rem !important;
+    margin: 0 !important;
+    height: auto !important;
+}
+
+/* FOOTER ULTRA-COMPACT */
+footer {
+    padding: 0.5rem 1rem !important;
+    margin-top: 1rem !important;
+    border-top: 1px solid #eee;
+    text-align: center;
+}
+
+footer small {
+    font-size: 0.65rem !important; /* "Very small" */
+    color: #888;
+}
+
+footer a {
+    color: #888 !important;
+    text-decoration: none;
+}
+
+.logo-club { height: 35px; vertical-align: middle; }
+nav { padding: 0.3rem 1rem; margin-bottom: 0; }

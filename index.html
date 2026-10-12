@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <header class="hero">
+        <hgroup>
+            <h1>Club Entre Lac et Morgon</h1>
+            <h3>Découvrez nos prochaines sorties et événements</h3>
+        </hgroup>
+    </header>
+
+    <main class="container">
+        <h2 id="evenements">Prochains Événements</h2>
+        
+        <!-- Zone dynamique remplie par JavaScript -->
+        <div id="liste-evenements">
+            <p>Chargement des événements en cours...</p>
+        </div>
+    </main>
+
+    <script>
+        fetch(GAS_EXEC_URL)
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('liste-evenements');
+                container.innerHTML = ''; // Nettoyage du message de chargement
+
+                if (!data.evenements || data.evenements.length === 0) {
+                    container.innerHTML = '<p>Aucun événement programmé pour le moment.</p>';
+                    return;
+                }
+
+                data.evenements.forEach(evenement => {
+                    let article = document.createElement('article');
+                    article.innerHTML = `
+                        <header><strong>${evenement.titre}</strong></header>
+                        <div class="event-content">
+                            <div class="event-info">
+                                <p class="description-principale">${evenement.description}</p>
+                                <div class="info-line">
+                                    <p>📅 <strong>Date :</strong> ${evenement.date} à ${evenement.heure}</p>
+                                    <p>📍 <strong>Lieu :</strong> ${evenement.lieu}</p>
+                                    <p>💰 <strong>Prix :</strong> ${evenement.prix}</p>
+                                    ${evenement.places ? `<p>👥 <strong>Places :</strong> \${evenement.places}</p>` : ''}
+                                </div>                    
+                            </div>
+                            <div class="event-actions">
+                                <div class="button-group">
+                                    <a href="${evenement.fileUrl}" target="_blank" class="contrast outline">Détails</a>                    
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(article);
+                });
+            })
+            .catch(error => {
+                console.error('Erreur lors du chargement des données :', error);
+                document.getElementById('liste-evenements').innerHTML = '<p>Impossible de charger les événements pour le moment.</p>';
+            });
+    </script>
+{% endblock %}

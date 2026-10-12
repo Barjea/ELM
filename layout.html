@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <link rel="stylesheet" href="./static/css/style.css">
+    <!-- Inclusion globale du fichier de configuration pour toutes les pages -->
+    <script src="./static/js/config.js"></script>
+    <title>Club Entre Lac et Morgon - Prototype Final</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a href="./index.html">
+                    <img src="./static/img/logo.jpg" alt="Logo" class="logo-club">
+                </a>
+                <strong>Club Entre Lac et Morgon</strong>
+            </li>
+        </ul>
+        <ul>
+            <li><a href="./presentation.html" class="secondary">Présentation</a></li>
+            <li><a href="./activites.html" class="secondary">Activités</a></li>
+            <li><a href="./photos.html" class="secondary">Photos</a></li>
+            <li><a href="#" role="button" style="padding: 0.2rem 0.6rem;">Adhérer</a></li>
+        </ul>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    <footer>
+        <small>© 2026 Club Entre Lac et Morgon</small>
+    </footer>
+</body>
+</html>
