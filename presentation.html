@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<main class="container">
+    <h2>Présentation du Club</h2>
+    
+    <!-- Zone où la liste sera injectée -->
+    <div id="liste-presentation-container">
+        <p>Chargement des documents...</p>
+    </div>
+</main>
+
+<script>
+    fetch(GAS_EXEC_URL)
+        .then(response => response.json())
+        .then(data => {
+            const container = document.getElementById('liste-presentation-container');
+            container.innerHTML = '';
+
+            if (!data.presentation || data.presentation.length === 0) {
+                container.innerHTML = '<p>Aucun document disponible dans cette section.</p>';
+                return;
+            }
+
+            data.presentation.forEach(doc => {
+                let article = document.createElement('article');
+                article.innerHTML = `
+                    <header style="display: flex; justify-content: space-between; align-items: center;">
+                        <strong>${doc.name}</strong>
+                        <a href="${doc.fileUrl}" target="_blank" class="contrast outline">Consulter</a>
+                    </header>
+                `;
+                container.appendChild(article);
+            });
+        })
+        .catch(error => {
+            console.error('Erreur :', error);
+            document.getElementById('liste-presentation-container').innerHTML = '<p>Impossible de charger les documents.</p>';
+        });
+</script>
+{% endblock %}
