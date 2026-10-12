@@ -96,10 +96,11 @@
 		            return;
 		        }
 
-		        data.photos.forEach(photoUrl => {
+		        data.photos.forEach(photo => {
 		            let card = document.createElement('div');
 		            card.className = 'photo-card';
-		            card.innerHTML = `<img src="${photoUrl}" alt="Photo Club">`;
+		            // On utilise photo.url pour la source et photo.name pour l'attribut alt
+		            card.innerHTML = `<img src="${photo.url}" alt="${photo.name}">`;
 		            container.appendChild(card);
 		        });
 		    })
