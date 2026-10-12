@@ -9,7 +9,7 @@ header.hero {
     width: 100vw; position: relative; left: 50%; right: 50%;
     margin-left: -50vw; margin-right: -50vw;
     height: 200px; background-color: #3b4c54; 
-    background-image: url("../img/fond-morgon red.jpg");
+    background-image: url("img/fond-morgon.jpg");
     background-size: contain; background-position: center;
     background-repeat: no-repeat; display: flex;
     align-items: center; justify-content: center;
