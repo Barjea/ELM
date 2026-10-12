@@ -25,14 +25,14 @@
         </nav>
     </header>
 
-<main class="container">
-    <h2>Galerie Photos</h2>
+	<main class="container">
+		<h2>Galerie Photos</h2>
 
-    <!-- Zone dynamique remplie par JavaScript -->
-    <div class="grid-photos" id="galerie-photos-container">
-        <p>Chargement des photos...</p>
-    </div>
-</main>>
+		<!-- Zone dynamique remplie par JavaScript -->
+		<div class="grid-photos" id="galerie-photos-container">
+		    <p>Chargement des photos...</p>
+		</div>
+	</main>
 
     <!-- Pied de page -->
     <footer class="container">
@@ -72,29 +72,31 @@
     }
 </style>
 
-<script>
-    fetch(GAS_EXEC_URL)
-        .then(response => response.json())
-        .then(data => {
-            const container = document.getElementById('galerie-photos-container');
-            container.innerHTML = '';
+	<script>
+		fetch(GAS_EXEC_URL)
+		    .then(response => response.json())
+		    .then(data => {
+		        const container = document.getElementById('galerie-photos-container');
+		        container.innerHTML = '';
 
-            if (!data.photos || data.photos.length === 0) {
-                container.innerHTML = '<p>Aucune photo dans le dossier pour le moment.</p>';
-                return;
-            }
+		        if (!data.photos || data.photos.length === 0) {
+		            container.innerHTML = '<p>Aucune photo dans le dossier pour le moment.</p>';
+		            return;
+		        }
 
-            data.photos.forEach(photoUrl => {
-                let card = document.createElement('div');
-                card.className = 'photo-card';
-                card.innerHTML = `<img src="${photoUrl}" alt="Photo Club">`;
-                container.appendChild(card);
-            });
-        })
-        .catch(error => {
-            console.error('Erreur lors du chargement des photos :', error);
-            document.getElementById('galerie-photos-container').innerHTML = '<p>Impossible de charger la galerie photos.</p>';
-        });
-</script>
+		        data.photos.forEach(photoUrl => {
+		            let card = document.createElement('div');
+		            card.className = 'photo-card';
+		            card.innerHTML = `<img src="${photoUrl}" alt="Photo Club">`;
+		            container.appendChild(card);
+		        });
+		    })
+		    .catch(error => {
+		        console.error('Erreur lors du chargement des photos :', error);
+		        document.getElementById('galerie-photos-container').innerHTML = '<p>Impossible de charger la galerie photos.</p>';
+		    });
+	</script>
+    </body>
+</html>
 
 

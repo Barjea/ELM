@@ -41,11 +41,11 @@
     <!-- Script de récupération des données Google Apps Script -->
     <script src="config.js"></script>
 
-    <script>
+<script>
         fetch(GAS_EXEC_URL)
             .then(response => response.json())
             .then(data => {
-                const container = document.getElementById('liste-evenements');
+                const container = document.getElementById('evenements-container'); // ← Corrigé ici
                 container.innerHTML = ''; // Nettoyage du message de chargement
 
                 if (!data.evenements || data.evenements.length === 0) {
@@ -64,7 +64,7 @@
                                     <p>📅 <strong>Date :</strong> ${evenement.date} à ${evenement.heure}</p>
                                     <p>📍 <strong>Lieu :</strong> ${evenement.lieu}</p>
                                     <p>💰 <strong>Prix :</strong> ${evenement.prix}</p>
-                                    ${evenement.places ? `<p>👥 <strong>Places :</strong> \${evenement.places}</p>` : ''}
+                                    ${evenement.places ? `<p>👥 <strong>Places :</strong> ${evenement.places}</p>` : ''}
                                 </div>                    
                             </div>
                             <div class="event-actions">
@@ -79,7 +79,8 @@
             })
             .catch(error => {
                 console.error('Erreur lors du chargement des données :', error);
-                document.getElementById('liste-evenements').innerHTML = '<p>Impossible de charger les événements pour le moment.</p>';
+                document.getElementById('evenements-container').innerHTML = '<p>Impossible de charger les événements pour le moment.</p>'; // ← Corrigé ici aussi
             });
     </script>
-{% endblock %}
+    </body>
+</html>

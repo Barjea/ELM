@@ -40,31 +40,33 @@
 
     <!-- Script de configuration et de récupération des données -->
     <script src="config.js"></script>
-<script>
-    fetch(GAS_EXEC_URL)
-        .then(response => response.json())
-        .then(data => {
-            const container = document.getElementById('liste-activites-container');
-            container.innerHTML = '';
+	<script>
+		fetch(GAS_EXEC_URL)
+		    .then(response => response.json())
+		    .then(data => {
+		        const container = document.getElementById('liste-activites-container');
+		        container.innerHTML = '';
 
-            if (!data.activites || data.activites.length === 0) {
-                container.innerHTML = '<p>Aucun document disponible dans cette section.</p>';
-                return;
-            }
+		        if (!data.activites || data.activites.length === 0) {
+		            container.innerHTML = '<p>Aucun document disponible dans cette section.</p>';
+		            return;
+		        }
 
-            data.activites.forEach(doc => {
-                let article = document.createElement('article');
-                article.innerHTML = `
-                    <header style="display: flex; justify-content: space-between; align-items: center;">
-                        <strong>${doc.name}</strong>
-                        <a href="${doc.fileUrl}" target="_blank" class="contrast outline">Consulter</a>
-                    </header>
-                `;
-                container.appendChild(article);
-            });
-        })
-        .catch(error => {
-            console.error('Erreur :', error);
-            document.getElementById('liste-activites-container').innerHTML = '<p>Impossible de charger les documents.</p>';
-        });
-</script>
+		        data.activites.forEach(doc => {
+		            let article = document.createElement('article');
+		            article.innerHTML = `
+		                <header style="display: flex; justify-content: space-between; align-items: center;">
+		                    <strong>${doc.name}</strong>
+		                    <a href="${doc.fileUrl}" target="_blank" class="contrast outline">Consulter</a>
+		                </header>
+		            `;
+		            container.appendChild(article);
+		        });
+		    })
+		    .catch(error => {
+		        console.error('Erreur :', error);
+		        document.getElementById('liste-activites-container').innerHTML = '<p>Impossible de charger les documents.</p>';
+		    });
+	</script>
+    </body>
+</html>
